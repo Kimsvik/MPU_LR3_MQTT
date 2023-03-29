@@ -19,10 +19,11 @@ public class Publisher {
     System.out.println("== START PUBLISHER ==");
 
 
-    MqttClient client = new MqttClient("tcp://localhost:1883", MqttClient.generateClientId());
+    MqttClient client = new MqttClient("tcp://172.20.10.2:1883", MqttClient.generateClientId());
     client.connect();
     MqttMessage message = new MqttMessage();
     message.setPayload(messageString.getBytes());
+    //cycle while
     client.publish("iot_data", message);
 
     System.out.println("\tMessage '"+ messageString +"' to 'iot_data'");
